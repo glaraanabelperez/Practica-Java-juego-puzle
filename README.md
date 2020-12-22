@@ -6,5 +6,5 @@ SIMPLE JUEGO PROGRMACION JAVA I ORIENTADO A OBJETOS.
 
 ## Diagrama del juego
 
-![Diagrama de Clases](https://github.com/glaraanabelperez/puzle/master/diagramaPng.png)
+![Diagrama de Clases](https://raw.githubusercontent.com/glaraanabelperez/puzle/master/diagramaPng.png)
 
