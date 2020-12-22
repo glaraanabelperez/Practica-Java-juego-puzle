@@ -115,7 +115,7 @@ public abstract class ElementoBase implements Elemento{
 	        }
 	    }
 	   
-	   public String empalmeCirculos(Elemento e) {
+	   public String verificarEmpuje(Elemento e) {
 		   
 		   int e1posX= this.getPosx(), e1posY=this.getPosy();
 		   int e1Ancho=this.getAncho(), e1Largo=this.getLarg();

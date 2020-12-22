@@ -21,8 +21,8 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
 	private int anchoTablero;
 	private int altoTablero;
 	private Usuario usuario;
-	private List<Figuras> listaUnirBase;
-	private List<Figuras> listaUnir2;
+	private List<Figuras> listaBase;
+	private List<Figuras> listaMoviles;
 	private ElementoBase pelotaPrin;
 	private ElementoBase enemigoPerseguidor;
 	private List<ElementoBase> listEnemigos;
@@ -38,7 +38,6 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
 	private boolean pararJuego;
 	private boolean setGanado;
 	private boolean colision;
-	private String empalmeCirculos;
 
 	
 	public Tablero(int ancho, int largo, Usuario a) {
@@ -65,8 +64,8 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
 
 	}
 	public void setListaFiguras( List<Figuras> listaFigurasBase, List<Figuras> listaFiguras2) {
-		this.listaUnirBase=listaFigurasBase;
-		this.listaUnir2=listaFiguras2;
+		this.listaBase=listaFigurasBase;
+		this.listaMoviles=listaFiguras2;
 	}
 	
 	@Override
@@ -80,11 +79,11 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
                 if (!pararJuego) {
                 	int i;
                 	//dibujarFigDecorativo(g2d);
-                    for(i=0; i<listaUnirBase.size(); i++) {
-                    	listaUnirBase.get(i).dibujarse(g2d);
+                    for(i=0; i<listaBase.size(); i++) {
+                    	listaBase.get(i).dibujarse(g2d);
                     }
-                    for(i=0; i<listaUnir2.size(); i++) {
-                    	listaUnir2.get(i).dibujarse(g2d);
+                    for(i=0; i<listaMoviles.size(); i++) {
+                    	listaMoviles.get(i).dibujarse(g2d);
                     }
                     pelotaPrin.dibujarse(g2d);
                     enemigoPerseguidor.dibujarse(g2d);
@@ -168,17 +167,18 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
 	}
 	
 	private void verificarEmparejamiento() {
-			for(Figuras e2:listaUnir2) {
-				if(e2.getfiguraUnida()==false) {
+		String empujaLado;
+			for(Figuras e2:listaMoviles) {
+				if(e2.verificaFueraJuego()==false) {
 					// VERIFICA EMPALME DE E.PRINCIPAL CON FIGURAS A UNIR...
-					empalmeCirculos=pelotaPrin.empalmeCirculos(e2);
-					if(empalmeCirculos.equalsIgnoreCase("izq")) {
+					empujaLado=pelotaPrin.verificarEmpuje(e2);
+					if(empujaLado.equalsIgnoreCase("izq")) {
 						e2.empujadoX(-1);
-					}else if(empalmeCirculos.equalsIgnoreCase("derecha")) {
+					}else if(empujaLado.equalsIgnoreCase("derecha")) {
 						e2.empujadoX(1);
-					}else if(empalmeCirculos.equalsIgnoreCase("arriba")) {
+					}else if(empujaLado.equalsIgnoreCase("arriba")) {
 						e2.empujadoY(1);
-					}else if(empalmeCirculos.equalsIgnoreCase("abajo")) {
+					}else if(empujaLado.equalsIgnoreCase("abajo")) {
 						e2.empujadoY(-1);
 					}
 				}
@@ -188,9 +188,9 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
 	private void verificarUnionFiguras() {
 		// VERIFICA PUZLE...
 			boolean union1=false;
-				for(Figuras e:listaUnir2) {
-					if(e.getfiguraUnida()==false) {
-						for(Figuras eBase:listaUnirBase) {
+				for(Figuras e:listaMoviles) {
+					if(e.verificaFueraJuego()==false) {
+						for(Figuras eBase:listaBase) {
 							union1=e.comprobarUnion(eBase);
 							 if(union1==true) {
 								union1=false;
@@ -255,11 +255,4 @@ public class Tablero  extends JPanel implements Runnable, KeyListener{
 	public void keyTyped(KeyEvent arg0) {
 	}
 	
-//	//FIGURA DECORATIVA...
-//	public void dibujarFigDecorativo(Graphics2D g2d) {
-//		// TODO Auto-generated method stub
-//		// TODO Auto-generated method stub
-//	 	g2d.setColor(Color.lightGray);
-//	 	g2d.fillRoundRect(135, 120, anchoTablero-350, altoTablero-150, 100, 100 );
-//	}
 }
