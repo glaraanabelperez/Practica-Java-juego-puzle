@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 
 public abstract class Figuras extends ElementoBase{
 
-	private boolean figuraUnida;
+	private boolean fueraDeJuego;
 
 	Figuras(int posx, int posy, int largo, int ancho, Color color) {
 		super(posx, posy, largo, ancho, color);
@@ -22,12 +22,12 @@ public abstract class Figuras extends ElementoBase{
 	
 	public abstract void unir(Figuras eBase);
 	
-	public boolean getfiguraUnida() {
-		return figuraUnida;
+	public boolean verificaFueraJuego() {
+		return fueraDeJuego;
 	}
 	
 	public void setfiguraUnida(boolean x) {
-		this.figuraUnida=x;
+		this.fueraDeJuego=x;
 	}	
 
 }

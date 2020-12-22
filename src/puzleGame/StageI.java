@@ -8,7 +8,7 @@ public class StageI implements PosicionesTablero {
 		private int inicioY;
 		private int fijaX;
 		private int fijaY;
-		private int filas=7;
+		private int filas=5;
 		private int columnas=3;
 		private int [] vFilas;
 		private int [] vColumnas;
@@ -16,17 +16,17 @@ public class StageI implements PosicionesTablero {
 	
 	
 	StageI(){
-		this.inicioX=70;
+		this.inicioX=30;
 		this.inicioY=150;
 		this.fijaX=460;
 		this.fijaY=70;
         this.vFilas=new int [filas];
         this.vColumnas=new int [columnas];
-        setMatriz();
+        setVectores();
 	}
 	
 	@Override
-	 public void setMatriz() {
+	 public void setVectores() {
 		for(int i=0; i<columnas; i++) {
 				vColumnas[i]=inicioX;
 				this.inicioX+=120;

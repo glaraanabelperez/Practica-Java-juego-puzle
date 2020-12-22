@@ -1,7 +1,7 @@
 package puzleGame;
 
 public interface PosicionesTablero {
-	public void setMatriz();
+	public void setVectores();
 	public int[] getvectorfilas();
 	public int[] getvectorColumnas();
 	public int getInicioX();

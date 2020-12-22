@@ -15,16 +15,16 @@ public class Marco extends JFrame{
 	private Tablero newGame;
 	private Usuario u;
 	private Thread t;
-	private List<Figuras> listaUnirBase;
-	private List<Figuras> listaUnir2;
+	private List<Figuras> listaBase;
+	private List<Figuras> listaMovil;
 	private PosicionesTablero stage;
 //comentario
 	 Marco(){
 		 
 		 this.stage=new StageI();	   
 		  setSize(800, 800);
-		  this.listaUnirBase = new ArrayList<Figuras>();
-	      this.listaUnir2 = new ArrayList<Figuras>();
+		  this.listaBase = new ArrayList<Figuras>();
+	      this.listaMovil = new ArrayList<Figuras>();
 	      crearFiurasUnir();
 
 		  this.u=new Usuario("Lara", 36);
@@ -35,7 +35,7 @@ public class Marco extends JFrame{
 		  add(newGame, BorderLayout.CENTER);
 		  addKeyListener(newGame);
 		  setFocusable(true);
-	      newGame.setListaFiguras(listaUnirBase, listaUnir2);
+	      newGame.setListaFiguras(listaBase, listaMovil);
 
 		 
 		  this.t = new Thread(newGame);	
@@ -55,17 +55,17 @@ public class Marco extends JFrame{
 			for(int i=0; i<vColumnas.length; i++) {
 				for(int e=0; e<vFilas.length-1; e++) {
 					Color ca=new Color((int)(Math.random()*256), 215, (int)(Math.random()*256));
-//					while(cont%3==0) {
-//						e++;
-//						cont++;
-//					}
-						FigurasUnir a=new FigurasUnir(xFija, yFija, medidas, medidas, ca);
-						this.listaUnir2.add(a);
-					
-					FigurasUnir b=new FigurasUnir(vColumnas[i], vFilas[e], medidas, medidas, ca);
-					this.listaUnirBase.add(b);
-					cont++;
+					while(cont%3==0) {
+						e++;
+						cont++;
+					}
+					FigurasUnir a=new FigurasUnir(xFija, yFija, medidas, medidas, ca);
+					this.listaMovil.add(a);
 					yFija+=60;
+
+					FigurasUnir b=new FigurasUnir(vColumnas[i], vFilas[e], medidas, medidas, ca);
+					this.listaBase.add(b);
+					cont++;
 				}
 			}
 		}
