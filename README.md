@@ -1,4 +1,5 @@
 # Puzle
-JUEGO PROGRMACION JAVA I ORIENTADO A OBJETOS.
-![Alt text](/../<master>/path/to/p1.jpg?raw=true "puzle")
+SIMPLE JUEGO PROGRMACION JAVA I ORIENTADO A OBJETOS.
+## Imagen del juego
 
+![Imagen del Juego](https://raw.githubusercontent.com/glaraanabelperez/puzle/master/p1.jpg)
