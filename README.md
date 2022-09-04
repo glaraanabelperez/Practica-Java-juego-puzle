@@ -1,5 +1,5 @@
 # Puzle
-SIMPLE JUEGO PROGRMACION JAVA I ORIENTADO A OBJETOS.
+JUEGO PROGRMACION JAVA I ORIENTADO A OBJETOS.
 ## Imagen del juego
 
 ![Imagen del Juego](https://raw.githubusercontent.com/glaraanabelperez/puzle/master/p1.jpg)
